@@ -163,8 +163,7 @@ $(document).ready(function() {
         
         // Отправляем данные через FormCarry
         try {
-            // ЗАМЕНИТЕ 'YOUR_FORM_KEY' на ваш ключ от FormCarry
-            const formCarryKey = 'YOUR_FORM_KEY'; // Замените на ваш ключ!
+            const formCarryKey = 'https://formcarry.com/s/ymceMyHFi61';
             const response = await fetch(`https://formcarry.com/s/${formCarryKey}`, {
                 method: 'POST',
                 body: formData,
