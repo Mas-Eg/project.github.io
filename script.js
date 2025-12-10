@@ -1,3 +1,4 @@
+// Мобильное меню
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenuClose = document.getElementById('mobileMenuClose');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -146,80 +147,6 @@ $(document).ready(function() {
         }
     );
     
-    // Обработка формы через FormCarry
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
-    
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        // Получаем данные формы
-        const formData = new FormData(contactForm);
-        
-        // Показываем сообщение об отправке
-        formMessage.textContent = 'Отправка формы...';
-        formMessage.className = 'form-message';
-        formMessage.style.display = 'block';
-        
-        // Отправляем данные через FormCarry
-        try {
-            const formCarryKey = 'ymceMyHFi61';
-            const response = await fetch(`https://formcarry.com/s/${formCarryKey}`, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-            
-            const result = await response.json();
-            
-            if (response.ok && result.code === 200) {
-                // Успешная отправка
-                formMessage.textContent = 'Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.';
-                formMessage.className = 'form-message success';
-                
-                // Очищаем форму
-                contactForm.reset();
-                
-                // Скрываем сообщение через 5 секунд
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
-            } else {
-                // Ошибка от FormCarry
-                let errorMessage = 'Произошла ошибка при отправке формы.';
-                
-                if (result.message) {
-                    errorMessage = result.message;
-                } else if (result.title) {
-                    errorMessage = result.title;
-                }
-                
-                formMessage.textContent = errorMessage;
-                formMessage.className = 'form-message error';
-                
-                // Скрываем сообщение через 5 секунд
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
-                
-                console.error('Ошибка FormCarry:', result);
-            }
-        } catch (error) {
-            // Сетевая ошибка или ошибка при выполнении запроса
-            formMessage.textContent = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.';
-            formMessage.className = 'form-message error';
-            
-            // Скрываем сообщение через 5 секунд
-            setTimeout(() => {
-                formMessage.style.display = 'none';
-            }, 5000);
-            
-            console.error('Ошибка сети:', error);
-        }
-    });
-    
     // Анимация карточек компетенций при скролле с использованием jQuery
     function checkCompetenciesAnimation() {
         const windowBottom = $(window).scrollTop() + $(window).height();
@@ -249,4 +176,113 @@ $(document).ready(function() {
     
     // Инициализация при загрузке
     checkCompetenciesAnimation();
+});
+
+// Отправка формы через FormCarry
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Показываем сообщение об отправке
+            formMessage.textContent = 'Отправка формы...';
+            formMessage.className = 'form-message';
+            formMessage.style.display = 'block';
+            formMessage.style.backgroundColor = '#fff3cd';
+            formMessage.style.color = '#856404';
+            
+            // Получаем значения полей формы
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // Простая валидация
+            if (!name || !phone || !email) {
+                formMessage.textContent = 'Пожалуйста, заполните все обязательные поля (имя, телефон, email).';
+                formMessage.className = 'form-message error';
+                return;
+            }
+            
+            // Проверка email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                formMessage.textContent = 'Пожалуйста, введите корректный email адрес.';
+                formMessage.className = 'form-message error';
+                return;
+            }
+            
+            // Создаем объект с данными формы
+            const formData = {
+                name: name,
+                phone: phone,
+                email: email,
+                message: message || 'Нет сообщения',
+                source: 'СТРОЙМАРКЕТЫ сайт',
+                timestamp: new Date().toLocaleString('ru-RU')
+            };
+            
+            try {
+                // Отправляем данные на FormCarry
+                const formCarryKey = 'ymceMyHFi61';
+                
+                // Отправляем как JSON
+                const response = await fetch(`https://formcarry.com/s/${formCarryKey}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok && (result.code === 200 || result.status === 'success')) {
+                    // Успешная отправка
+                    formMessage.textContent = '✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.';
+                    formMessage.className = 'form-message success';
+                    
+                    // Очищаем форму
+                    contactForm.reset();
+                    
+                    // Скрываем сообщение через 7 секунд
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 7000);
+                } else {
+                    // Ошибка от FormCarry
+                    let errorMessage = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.';
+                    
+                    if (result.message) {
+                        errorMessage = result.message;
+                    }
+                    
+                    formMessage.textContent = '❌ ' + errorMessage;
+                    formMessage.className = 'form-message error';
+                    
+                    // Скрываем сообщение через 7 секунд
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 7000);
+                    
+                    console.error('Ошибка FormCarry:', result);
+                }
+            } catch (error) {
+                // Сетевая ошибка
+                formMessage.textContent = '❌ Ошибка сети. Пожалуйста, проверьте подключение к интернету и попробуйте еще раз.';
+                formMessage.className = 'form-message error';
+                
+                // Скрываем сообщение через 7 секунд
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 7000);
+                
+                console.error('Ошибка сети:', error);
+            }
+        });
+    }
 });
