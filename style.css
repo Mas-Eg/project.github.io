@@ -1,5 +1,4 @@
-
-        * {
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -558,4 +557,26 @@
             .footer-column {
                 padding-right: 0;
             }
-        }
+            /* Стили для индикатора загрузки */
+            #submitSpinner {
+                margin-left: 8px;
+            }
+
+            .btn:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+            }
+
+            /* Дополнительные стили для сообщений формы */
+            .form-message.info {
+                background-color: #d1ecf1;
+                color: #0c5460;
+                border: 1px solid #bee5eb;
+            }
+
+            .form-message.warning {
+                background-color: #fff3cd;
+                color: #856404;
+                border: 1px solid #ffeaa7;
+            }
+}
