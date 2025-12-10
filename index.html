@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СТРОЙМАРКЕТЫ - ТО, ЧТО НАДО!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="video-background">
+            <video autoplay muted loop playsinline>
+                <source src="video.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+            <nav class="nav">
+                <a href="#" class="logo">СТРОЙ<span>МАРКЕТЫ</span></a>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li>
+                        <a href="#competencies">Компетенции</a>
+                        <div class="dropdown-menu">
+                            <a href="#competency-5">Качество материалов</a>
+                            <a href="#competency-2">Профессиональный подход</a>
+                            <a href="#competency-3">Надежные поставщики</a>
+                            <a href="#competency-1">Математическая точность</a>
+                            <a href="#competency-4">Полный цикл работ</a>
+                        </div>
+                    </li>
+                    <li><a href="#slider">Проекты</a></li>
+                    <li><a href="#form">Контакты</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        
+
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul class="mobile-menu-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#competencies">Компетенции</a></li>
+                <li><a href="#slider">Проекты</a></li>
+                <li><a href="#form">Контакты</a></li>
+            </ul>
+        </div>
+        
+
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>СТРОЙМАРКЕТЫ</h1>
+                <p>ТО, ЧТО НАДО! Всё для строительства и ремонта. Профессиональные материалы, инструменты и оборудование от ведущих производителей.</p>
+                <a href="#form" class="btn">Оставить заявку</a>
+            </div>
+        </section>
+    </header>
+    
+
+        <section class="competencies" id="competencies">
+        <div class="container">
+            <h2 class="section-title">Наши компетенции</h2>
+            <div class="competencies-grid">
+
+                
+                <div class="competency-card" id="competency-1">
+                    <div class="competency-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Математическая точность</h3>
+                    <p>Точный расчет материалов и сметы для каждого проекта.</p>
+                    </div>
+                
+
+                <div class="competency-card" id="competency-2">
+                    <div class="competency-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>Профессиональный подход</h3>
+                    <p>Наши специалисты имеют многолетний опыт в строительной отрасли.</p>
+                </div>
+                
+
+                <div class="competency-card" id="competency-3">
+                    <div class="competency-icon">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <h3>Надежные поставщики</h3>
+                    <p>Прямые поставки от производителей без посредников.</p>
+                </div>
+                
+
+                <div class="competency-card" id="competency-4">
+                    <div class="competency-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Полный цикл работ</h3>
+                    <p>От проектирования до сдачи объекта под ключ.</p>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="container">
+                    <div class="competency-card" id="competency-5">
+                       <div class="competency-icon">
+                           <i class="fas fa-tools"></i>
+                       </div>
+                       <h3>Качество материалов</h3>
+                       <p>Работаем только с проверенными поставщиками, гарантируя высокое качество всех материалов.</p>
+                    </div>
+                </div>        
+    </section>
+    
+    <section class="slider-section" id="slider">
+        <div class="container">
+            <h2 class="section-title">Наши проекты</h2>
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div class="slider" id="jquery-slider">
+                        <div class="slide">
+                            <div class="slide-content">
+                                <h3>Строительство торгового центра</h3>
+                                <p>Полный цикл работ от проектирования до сдачи объекта. Использование современных материалов и технологий.</p>
+                                <p>Срок реализации: 18 месяцев</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-content">
+                                <h3>Реконструкция жилого комплекса</h3>
+                                <p>Капитальный ремонт и модернизация инженерных систем. Улучшение фасадов и общественных пространств.</p>
+                                <p>Срок реализации: 12 месяцев</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-content">
+                                <h3>Строительство логистического центра</h3>
+                                <p>Проектирование и строительство современного логистического комплекса с использованием энергосберегающих технологий.</p>
+                                <p>Срок реализации: 24 месяца</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-content">
+                                <h3>Строительство бизнес-центра</h3>
+                                <p>Современный бизнес-центр класса А с применением инновационных технологий в строительстве.</p>
+                                <p>Срок реализации: 20 месяцев</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-nav">
+                    <button class="slider-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="slider-dots" id="sliderDots"></div>
+
+            </div>
+        </div>
+    </section>  
+
+    <section class="form-section" id="form">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="form-title">Оставить заявку</h2>
+                <div class="form-message" id="formMessage"></div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" class="form-control" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>СТРОЙМАРКЕТЫ</h3>
+                    <p>Всё для строительства и ремонта. Профессиональные материалы, инструменты и оборудование от ведущих производителей.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Строителей, 15</li>
+                        <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
+                        <li><i class="fas fa-envelope"></i> info@stroymarkety.ru</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Быстрые ссылки</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#competencies">Компетенции</a></li>
+                        <li><a href="#slider">Проекты</a></li>
+                        <li><a href="#form">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 СТРОЙМАРКЕТЫ. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
