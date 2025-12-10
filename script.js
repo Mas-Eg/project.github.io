@@ -163,7 +163,7 @@ $(document).ready(function() {
         
         // Отправляем данные через FormCarry
         try {
-            const formCarryKey = 'https://formcarry.com/s/ymceMyHFi61';
+            const formCarryKey = 'ymceMyHFi61';
             const response = await fetch(`https://formcarry.com/s/${formCarryKey}`, {
                 method: 'POST',
                 body: formData,
